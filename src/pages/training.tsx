@@ -54,10 +54,8 @@ const COURSES: Course[] = [
     id: "privacy-foundations",
     title: "Privacy Foundations for Modern Teams",
     tag: "Most popular",
-    duration: "6 hours · 2 half-days",
     format: "Live virtual or on-site",
     level: "Foundational",
-    price: "From $4,800 per cohort (up to 25 seats)",
     summary:
       "A clear, plain-English grounding in data protection — what privacy actually is, why it matters to your business, and how the laws everyone keeps emailing you about really work in practice.",
     audience:
@@ -66,7 +64,7 @@ const COURSES: Course[] = [
       "Read and apply the core principles of GDPR, CCPA, and the wave of US state laws",
       "Recognize personal data and special categories in everyday workflows",
       "Spot the moments in product, marketing, and ops where privacy decisions get made",
-      "Speak the same vocabulary as legal, security, and engineering counterparts",
+      "Speak the same vocabulary as privacy, security, and compliance counterparts",
     ],
     modules: [
       {
@@ -100,12 +98,10 @@ const COURSES: Course[] = [
     id: "ai-governance-bootcamp",
     title: "AI Governance Bootcamp",
     tag: "New for 2026",
-    duration: "8 hours · 2 days",
     format: "Live virtual or on-site",
     level: "Intermediate",
-    price: "From $7,500 per cohort (up to 20 seats)",
     summary:
-      "A hands-on workshop for teams putting LLMs, agents, and ML into production. Learn how to ship AI features your privacy, security, and legal teams can actually defend.",
+      "A hands-on workshop for teams putting LLMs, agents, and ML into production. Learn how to ship AI features your privacy, security, and compliance teams can actually defend.",
     audience:
       "Product managers, engineering leads, ML/AI practitioners, security and privacy professionals adopting GenAI.",
     outcomes: [
@@ -134,7 +130,7 @@ const COURSES: Course[] = [
       {
         title: "Module 3 — Governance That Ships",
         bullets: [
-          "Writing an AI AUP your engineers won't ignore",
+          "Writing an AI AUP your teams won't ignore",
           "Disclosure, opt-outs, and user-facing transparency",
           "Building a lightweight AI review board",
         ],
@@ -143,67 +139,11 @@ const COURSES: Course[] = [
     icon: Brain,
   },
   {
-    id: "gdpr-deep-dive",
-    title: "GDPR Deep Dive for Operators",
-    tag: "Certificate-ready",
-    duration: "12 hours · 4 sessions",
-    format: "Live virtual cohort",
-    level: "Advanced",
-    price: "From $1,200 per learner (volume pricing available)",
-    summary:
-      "An operator-focused, four-week sprint through the GDPR — built for the people who actually have to make compliance happen. Includes templates, checklists, and a graded capstone.",
-    audience:
-      "Privacy program leads, DPOs in training, in-house counsel, security engineers, and senior PMs.",
-    outcomes: [
-      "Confidently apply Articles 5, 6, 9, 13, 14, 28, 32, and 33 to real product decisions",
-      "Build a defensible Record of Processing Activities (Article 30) from scratch",
-      "Run a Data Protection Impact Assessment end-to-end",
-      "Respond to data subject requests within statutory timelines",
-    ],
-    modules: [
-      {
-        title: "Week 1 — Principles & Lawful Bases",
-        bullets: [
-          "Lawfulness, fairness, transparency in practice",
-          "Consent vs. legitimate interest — when to use which",
-          "Special category and children's data",
-        ],
-      },
-      {
-        title: "Week 2 — Records, DPIAs & Vendors",
-        bullets: [
-          "Building a usable RoPA without a 200-tab spreadsheet",
-          "DPIA workflows that ship in days, not months",
-          "Article 28 contracts, SCCs, and transfer impact assessments",
-        ],
-      },
-      {
-        title: "Week 3 — Rights & Incidents",
-        bullets: [
-          "DSAR intake, identity verification, and response templates",
-          "72-hour breach reporting — what regulators expect",
-          "Working with your security and IR teams",
-        ],
-      },
-      {
-        title: "Week 4 — Capstone & Review",
-        bullets: [
-          "Bring your own use case for live workshopping",
-          "Graded mini-DPIA and DSAR scenarios",
-          "Certificate of Completion from APTA Foundry",
-        ],
-      },
-    ],
-    icon: Layers,
-  },
-  {
     id: "executive-briefing",
     title: "Executive Privacy & AI Briefing",
     tag: "C-suite",
-    duration: "90 minutes · 1 session",
     format: "On-site or live virtual",
     level: "Foundational",
-    price: "From $3,500 per session",
     summary:
       "A focused, jargon-free briefing for boards and executive teams. We translate the regulatory landscape into the three or four decisions you actually have to make this quarter.",
     audience:
@@ -211,7 +151,7 @@ const COURSES: Course[] = [
     outcomes: [
       "Understand your top-five privacy and AI risks in business terms",
       "Get a simple framework for prioritizing privacy investment",
-      "Know exactly what to ask your CISO, GC, and Head of Product",
+      "Know exactly what to ask your compliance and product leaders",
       "Leave with a one-page board-ready summary",
     ],
     modules: [
@@ -245,10 +185,8 @@ const COURSES: Course[] = [
     id: "dsar-workshop",
     title: "DSAR Response Workshop",
     tag: "Hands-on",
-    duration: "4 hours · 1 session",
     format: "Live virtual or on-site",
     level: "Intermediate",
-    price: "From $3,200 per cohort (up to 20 seats)",
     summary:
       "A practical clinic for the people who actually answer Data Subject Access Requests. We cover intake, identity verification, internal collection, redaction, and the email you wish you hadn't sent.",
     audience:
@@ -271,7 +209,7 @@ const COURSES: Course[] = [
         title: "Module 2 — Internal Collection",
         bullets: [
           "Mapping where personal data actually lives",
-          "Working with engineering to build self-service tooling",
+          "Working with teams to build self-service tooling",
         ],
       },
       {
@@ -283,49 +221,6 @@ const COURSES: Course[] = [
       },
     ],
     icon: FileSearch,
-  },
-  {
-    id: "privacy-by-design",
-    title: "Privacy by Design for Product & Engineering",
-    tag: "Eng-friendly",
-    duration: "6 hours · 2 half-days",
-    format: "Live virtual or on-site",
-    level: "Intermediate",
-    price: "From $5,400 per cohort (up to 30 seats)",
-    summary:
-      "A practical workshop that bakes privacy into the way your product and engineering teams already work — sprint reviews, design docs, RFC templates, and on-call playbooks.",
-    audience:
-      "Product managers, engineering managers, designers, and platform/security engineers.",
-    outcomes: [
-      "Embed privacy reviews into your existing PRD and RFC process",
-      "Design data minimization, retention, and deletion into systems from day one",
-      "Build internal SDKs and tooling that make the privacy-safe path the easy path",
-      "Avoid the rebuilds that come from privacy decisions made too late",
-    ],
-    modules: [
-      {
-        title: "Module 1 — Privacy as a System Property",
-        bullets: [
-          "Data flow diagramming for engineers",
-          "Minimization, purpose limitation, and retention in code",
-        ],
-      },
-      {
-        title: "Module 2 — Designing Reviewable Features",
-        bullets: [
-          "Privacy questions in the PRD and design doc",
-          "The five-minute privacy review for product teams",
-        ],
-      },
-      {
-        title: "Module 3 — Tooling & Defaults",
-        bullets: [
-          "Building internal SDKs for logging, analytics, and consent",
-          "Deletion, anonymization, and the 'right-to-be-forgotten' pipeline",
-        ],
-      },
-    ],
-    icon: Building2,
   },
 ];
 
@@ -455,7 +350,7 @@ export default function Training() {
 
                 <ul className="space-y-2 mb-6 font-mono text-xs text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <Clock className="w-3.5 h-3.5 text-secondary" />
+                    {/* <Clock className="w-3.5 h-3.5 text-secondary" /> */}
                     {c.duration}
                   </li>
                   <li className="flex items-center gap-2">

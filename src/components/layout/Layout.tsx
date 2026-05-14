@@ -31,10 +31,10 @@ const NAV: NavItem[] = [
     href: "/services",
     items: [
       { label: "Privacy Audit & Gap Analysis", href: "/services/privacy-audit", desc: "See exactly where your gaps are", icon: FileSearch },
+      { label: "HIPAA & Health Data", href: "/services/hipaa", desc: "Health data rules, made simple", icon: Shield },
       { label: "Privacy Program Build", href: "/services/program-build", desc: "We build your whole compliance setup", icon: Layers },
       { label: "AI Governance Advisory", href: "/services/ai-governance", desc: "Ship AI responsibly and confidently", icon: Brain },
-      { label: "HIPAA & Health Data", href: "/services/hipaa", desc: "Health data rules, made simple", icon: Shield },
-      { label: "Regulatory & Breach Response", href: "/services/regulatory-response", desc: "We're there when things go wrong", icon: AlertCircle },
+      
     ],
   },
   {
@@ -43,10 +43,8 @@ const NAV: NavItem[] = [
     items: [
       { label: "Privacy Foundations", href: "/training/privacy-foundations", desc: "For every team, not just legal", icon: Users },
       { label: "AI Governance Bootcamp", href: "/training/ai-governance-bootcamp", desc: "For product and engineering teams", icon: Brain },
-      { label: "GDPR Deep Dive", href: "/training/gdpr-deep-dive", desc: "4-week sprint with a certificate", icon: GraduationCap },
       { label: "Executive Briefing", href: "/training/executive-briefing", desc: "A clear briefing for your leadership", icon: Briefcase },
       { label: "DSAR Response Workshop", href: "/training/dsar-workshop", desc: "Handle data requests without stress", icon: FileSearch },
-      { label: "Privacy by Design", href: "/training/privacy-by-design", desc: "Build privacy in from the start", icon: Building2 },
     ],
   },
   { label: "Resources", href: "/resources" },
@@ -88,18 +86,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen flex flex-col bg-background text-foreground font-sans">
 
       {/* ── HEADER ── */}
+{/* ── HEADER ── */}
 <header
   className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
     isScrolled
-      ? "bg-[#1C0810]/90 backdrop-blur-xl shadow-md shadow-black/20 border-b border-white/5 py-2"
-      : "bg-transparent py-3"
+      ? "bg-white shadow-md border-b border-gray-200 py-2"
+      : "bg-white py-3 shadow-sm"
   }`}
 >
   <div className="container mx-auto px-6 flex items-center justify-between">
 
     {/* Logo (simplified + clean) */}
     <Link href="/" className="flex items-center shrink-0 group z-50">
-      <div className="bg-white px-2.5 py-1 rounded-md shadow-sm">
+      <div className="px-2.5 py-1 rounded-md">
         <img
           src={`${import.meta.env.BASE_URL}brand/logo-new.png`}
           alt="APTA Foundry"
@@ -122,7 +121,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-all duration-150 ${
               isActive(item.href)
                 ? "text-[#E8B84B]"
-                : "text-white/80 hover:text-white hover:bg-white/5"
+                : "text-gray-700 hover:text-[#5C1A2E] hover:bg-gray-50"
             }`}
           >
             {item.label}
@@ -131,7 +130,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 className={`w-3.5 h-3.5 transition-transform duration-200 ${
                   openDrop === item.label
                     ? "rotate-180 text-[#E8B84B]"
-                    : "text-white/40"
+                    : "text-gray-400"
                 }`}
               />
             )}
@@ -145,7 +144,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 4, scale: 0.98 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-full left-0 mt-2 bg-white border border-gray-100 shadow-xl rounded-md overflow-hidden"
+                className="absolute top-full left-0 mt-2 bg-white border border-gray-200 shadow-xl rounded-md overflow-hidden"
                 style={{ minWidth: "300px" }}
               >
                 <div className="h-0.5 bg-gradient-to-r from-[#5C1A2E] via-[#E8B84B] to-[#1A7A8A]" />
@@ -155,7 +154,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <Link
                       key={sub.label}
                       href={sub.href}
-                      className="flex items-start gap-3 px-3 py-3 rounded-md group hover:bg-[#5C1A2E]/5 transition"
+                      className="flex items-start gap-3 px-3 py-3 rounded-md group hover:bg-gray-50 transition"
                     >
                       <div className="w-8 h-8 flex items-center justify-center bg-[#5C1A2E]/10 group-hover:bg-[#5C1A2E]/20 transition">
                         <sub.icon className="w-3.5 h-3.5 text-[#5C1A2E]" />
@@ -190,30 +189,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       ))}
     </nav>
 
-    {/* CTA */}
-    <div className="hidden lg:flex items-center gap-4">
-      <a
-        href="https://calendly.com/akanachuma/30min"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm text-white/70 hover:text-white transition"
-      >
-        Schedule a Call
-      </a>
-
-      <Button
-        asChild
-        className="bg-[#E8B84B] text-[#3D0F1D] hover:bg-[#F0C968] rounded-md px-4 py-2 text-sm font-semibold shadow-md hover:shadow-[#E8B84B]/25 transition"
-      >
-        <Link href="/contact">
-          Book a Call <ArrowRight className="w-3.5 h-3.5 ml-1 inline" />
-        </Link>
-      </Button>
-    </div>
+   {/* CTA */}
+<div className="hidden lg:flex items-center gap-4">
+  <Button
+    asChild
+    className="bg-[#E8B84B] text-[#3D0F1D] hover:bg-[#F0C968] rounded-md px-4 py-2 text-sm font-semibold shadow-md hover:shadow-[#E8B84B]/25 transition"
+  >
+    <a 
+      href="https://calendly.com/akanachuma/30min"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Let's Talk <ArrowRight className="w-3.5 h-3.5 ml-1 inline" />
+    </a>
+  </Button>
+</div>
 
     {/* Mobile */}
     <button
-      className="lg:hidden text-white p-2 hover:text-[#E8B84B]"
+      className="lg:hidden text-gray-700 p-2 hover:text-[#E8B84B]"
       onClick={() => setMobileOpen(!mobileOpen)}
       aria-label="Toggle menu"
     >
@@ -307,7 +301,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 style={{ filter: "brightness(0) invert(1)" }}
               />
               <p className="text-sm leading-relaxed text-white/50 mb-6 max-w-xs">
-                The trusted privacy advisor serious companies call before regulators do.
+               Apta Foundry
               </p>
               <div className="flex gap-3">
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
@@ -327,10 +321,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <ul className="space-y-3">
                 {[
                   { label: "Privacy Audit & Gap Analysis", href: "/services/privacy-audit" },
+                  { label: "HIPAA & Health Data", href: "/services/hipaa" },
                   { label: "Privacy Program Build", href: "/services/program-build" },
                   { label: "AI Governance Advisory", href: "/services/ai-governance" },
-                  { label: "HIPAA & Health Data", href: "/services/hipaa" },
-                  { label: "Regulatory Response", href: "/services/regulatory-response" },
+                  
                 ].map((s) => (
                   <li key={s.label}>
                     <Link href={s.href} className="text-sm text-white/50 hover:text-white/90 transition-colors leading-relaxed block">{s.label}</Link>
@@ -374,7 +368,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </ul>
               <a href="https://calendly.com/akanachuma/30min" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[#E8B84B] hover:text-[#F0C968] transition-colors">
-                Book a Free Call <ArrowRight className="w-3.5 h-3.5" />
+                Let's Talk <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>

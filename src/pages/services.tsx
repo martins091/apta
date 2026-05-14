@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { Brain, FileSearch, Layers, Shield, Users } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -14,26 +15,48 @@ export default function Services() {
     window.scrollTo(0, 0);
   }, []);
 
-  const services = [
-    {
-      title: "Privacy Audit & Gap Analysis",
-      subtitle: "Know exactly where your risk lies.",
-      desc: "We conduct a comprehensive review of your data flows, vendor contracts, and internal policies against current regulatory frameworks (GDPR, CCPA, CPA, etc.). You receive a prioritized, risk-scored remediation roadmap.",
-      deliverables: ["Comprehensive Data Map", "Vendor Risk Assessment", "Prioritized Remediation Roadmap", "Executive Risk Briefing"]
-    },
-    {
-      title: "Privacy Program Build",
-      subtitle: "Operationalize compliance across your organization.",
-      desc: "For companies that need to stand up a privacy function from scratch. We build the engine: drafting external policies, establishing internal data handling procedures, and setting up automated DSAR (Data Subject Access Request) workflows.",
-      deliverables: ["External Privacy Policy & Cookie Notice", "Internal Data Handling Guidelines", "DSAR Response Playbook", "Employee Training Deck"]
-    },
-    {
-      title: "AI Governance Advisory",
-      subtitle: "Deploy AI safely and securely.",
-      desc: "Before you connect customer data to an LLM or train your own models, we help you establish guardrails. We map the risks in your AI usage, review vendor terms, and build an Acceptable Use Policy that protects your IP and customer trust.",
-      deliverables: ["AI Acceptable Use Policy", "Model Risk Assessment", "Vendor Due Diligence Review", "Opt-out / Consent Strategy"]
-    }
-  ];
+ const services = [
+  {
+    title: "We uncover your privacy risks",
+    sub: "Privacy Audit & Gap Analysis",
+    desc: "We conduct a comprehensive review of your data flows, vendor contracts, and internal policies against current regulatory frameworks (GDPR, CCPA, CPA, etc.). You receive a prioritized, risk-scored remediation roadmap.",
+    href: "/services/privacy-audit",
+    icon: FileSearch,
+    deliverables: ["Comprehensive Data Map", "Vendor Risk Assessment", "Prioritized Remediation Roadmap", "Executive Risk Briefing"]
+  },
+  {
+    title: "We secure your health data",
+    sub: "HIPAA & Health Data",
+    desc: "Whether you're a covered entity, a business associate, or a wellness app — we cut through the confusion and tell you exactly what applies to you.",
+    href: "/services/hipaa",
+    icon: Shield,
+    deliverables: ["HIPAA Compliance Assessment", "Business Associate Agreements Review", "Privacy & Security Policies", "Breach Response Protocol"]
+  },
+  {
+    title: "We build your privacy program",
+    sub: "Privacy Program Build",
+    desc: "For companies that need to starts up a privacy function from scratch. We build the engine: drafting external policies, establishing internal data handling procedures, and setting up automated DSAR workflows.",
+    href: "/services/program-build",
+    icon: Layers,
+    deliverables: ["External Privacy Policy & Cookie Notice", "Internal Data Handling Guidelines", "DSAR Response Playbook", "Employee Training Deck"]
+  },
+  {
+    title: "We guide your AI strategy",
+    sub: "AI Governance Advisory",
+    desc: "Before you connect customer data to an LLM or train your own models, we help you establish guardrails. We map the risks in your AI usage, review vendor terms, and build an Acceptable Use Policy that protects your IP and customer trust.",
+    href: "/services/ai-governance",
+    icon: Brain,
+    deliverables: ["AI Acceptable Use Policy", "Model Risk Assessment", "Vendor Due Diligence Review", "Opt-out / Consent Strategy"]
+  },
+  {
+    title: "We train your teams on privacy",
+    sub: "Training & Workshops",
+    desc: "Live, tailored sessions for product managers, marketers, and leadership. Real-world examples. No death-by-PowerPoint.",
+    href: "/training",
+    icon: Users,
+    deliverables: ["Custom Training Modules", "Role-Based Workshops", "Training Documentation", "Certification Tracking"]
+  }
+];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -88,7 +111,7 @@ export default function Services() {
                   </div>
 
                   <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-none px-8 py-6 h-auto">
-                    <Link href="/contact">Book a Call to Discuss</Link>
+                    <Link href="/contact">Let's Talk</Link>
                   </Button>
                 </div>
               </motion.div>
@@ -105,7 +128,7 @@ export default function Services() {
             Let's have a candid 30-minute conversation about your business goals and compliance posture. No high-pressure sales.
           </p>
           <Button asChild size="lg" className="bg-transparent border border-accent text-accent hover:bg-accent hover:text-accent-foreground rounded-none px-12 py-6 text-xl h-auto transition-colors">
-            <Link href="/contact">Schedule Discovery Call</Link>
+            <Link href="/contact">Let's Talk</Link>
           </Button>
         </div>
       </section>

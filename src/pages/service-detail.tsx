@@ -100,7 +100,7 @@ export default function ServiceDetail() {
               </div>
               <div className="border-t border-border pt-6">
                 <Button asChild className="w-full bg-[#5C1A2E] text-white hover:bg-[#7A2240] rounded-none py-4 h-auto font-bold text-sm">
-                  <Link href="/contact">Book a Discovery Call <ArrowRight className="w-3.5 h-3.5 ml-1.5 inline" /></Link>
+                  <Link href="/contact">Lets Talk <ArrowRight className="w-3.5 h-3.5 ml-1.5 inline" /></Link>
                 </Button>
               </div>
             </motion.div>
@@ -220,7 +220,7 @@ export default function ServiceDetail() {
             </div>
             <div className="flex gap-4">
               <Button asChild className="bg-[#5C1A2E] text-white hover:bg-[#7A2240] rounded-none px-8 py-4 h-auto font-bold">
-                <Link href="/contact">Book a Call <Phone className="w-3.5 h-3.5 ml-1.5 inline" /></Link>
+                <Link href="/contact">Let's Talk <Phone className="w-3.5 h-3.5 ml-1.5 inline" /></Link>
               </Button>
               <Button asChild variant="outline" className="border-[#5C1A2E]/30 text-[#5C1A2E] hover:bg-[#5C1A2E]/5 rounded-none px-8 py-4 h-auto">
                 <Link href="/services">All Services</Link>

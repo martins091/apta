@@ -29,24 +29,14 @@ export default function Resources() {
       date: "September 28, 2024",
       readTime: "8 min read"
     },
-    {
-      category: "Career in Privacy",
-      title: "Why Engineering Backgrounds Make the Best Privacy Pros",
-      date: "August 15, 2024",
-      readTime: "5 min read"
-    },
+  
     {
       category: "GDPR",
       title: "Demystifying Data Transfer Impact Assessments (DTIAs)",
       date: "July 02, 2024",
       readTime: "10 min read"
     },
-    {
-      category: "Tools & Templates",
-      title: "How to Build a Data Map That Actually Helps Engineers",
-      date: "June 18, 2024",
-      readTime: "7 min read"
-    },
+  
     {
       category: "US Privacy Law",
       title: "Navigating Health Data Outside of HIPAA",
@@ -63,7 +53,7 @@ export default function Resources() {
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6">Insights & Resources</h1>
           <p className="text-xl font-sans text-primary-foreground/80 max-w-2xl mx-auto">
-            Practical guidance on privacy engineering, AI governance, and compliance strategy.
+            Practical guidance on privacy, AI governance, and compliance strategy.
           </p>
         </div>
       </section>

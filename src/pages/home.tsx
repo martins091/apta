@@ -11,7 +11,7 @@ import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const CYCLING_WORDS = ["Complex.", "Costly.", "Confusing.", "Your Advantage."];
+const CYCLING_WORDS = ["Complex.", "Confusing."];
 
 function useCountUp(target: number, duration = 2.2) {
   const [count, setCount] = useState(0);
@@ -67,7 +67,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-
       {/* ─────────────── HERO ─────────────── */}
       <section className="relative h-screen min-h-[640px] flex flex-col justify-center overflow-hidden bg-[#05030A]">
         <div className="absolute inset-0 z-0">
@@ -92,7 +91,7 @@ export default function Home() {
               className="text-[2.8rem] sm:text-5xl lg:text-[4.5rem] font-serif font-bold leading-[1.05] tracking-tight text-white mb-4"
               style={{ textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
             >
-              Privacy is&hellip;
+              Privacy can be&nbsp;
             </motion.h1>
 
             {/* Cycling word */}
@@ -111,7 +110,7 @@ export default function Home() {
               custom={2}
               className="text-lg sm:text-xl font-sans text-white/75 max-w-xl leading-relaxed mb-8"
             >
-              It doesn't have to be. At APTA Foundry, we sit with your team, understand your world, and turn complicated privacy rules into a clear plan you can actually follow.
+              Apta Foundry helps organizations navigate data privacy, AI governance, and regulatory change with the clarity to act confidently and the intelligence to stay ahead.
             </motion.p>
 
             {/* CTAs */}
@@ -174,14 +173,14 @@ export default function Home() {
               <div className="aspect-[4/5] overflow-hidden relative bg-[#1A0A12]">
                 <img
                   src={`${import.meta.env.BASE_URL}images/headshot.png`}
-                  alt="Akan Achuma — Founder"
+                  alt="Chuma Akana — Founder"
                   className="object-cover w-full h-full opacity-90"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D050A]/90 via-[#0D050A]/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <div className="w-8 h-[2px] bg-[#E8B84B] mb-3" />
-                  <h3 className="text-2xl font-serif text-white mb-1">Akan Achuma</h3>
+                  <h3 className="text-2xl font-serif text-white mb-1">Chuma Akana</h3>
                   <p className="font-mono text-xs text-white/55 uppercase tracking-widest">Founder & Lead Consultant</p>
                 </div>
               </div>
@@ -225,9 +224,7 @@ export default function Home() {
                 </ul>
               </motion.div>
               <motion.div variants={fade} custom={5} className="flex flex-wrap gap-4">
-                <Button asChild className="bg-[#5C1A2E] text-white hover:bg-[#7A2240] rounded-none px-7 py-5 h-auto text-sm font-bold tracking-wide transition-all">
-                  <Link href="/about">Meet the Team <ArrowRight className="w-3.5 h-3.5 ml-1.5 inline" /></Link>
-                </Button>
+
                 <Button asChild variant="outline" className="border-[#5C1A2E]/30 text-[#5C1A2E] hover:bg-[#5C1A2E]/5 rounded-none px-7 py-5 h-auto text-sm font-bold">
                   <Link href="/services">Our Services</Link>
                 </Button>
@@ -266,46 +263,40 @@ export default function Home() {
           >
             {[
               {
-                title: "I need to know where my risks are",
+                title: "We uncover your privacy risks",
                 sub: "Privacy Audit & Gap Analysis",
                 desc: "We review everything — your data flows, vendor contracts, consent mechanisms, and policies — and tell you exactly what needs fixing and in what order.",
                 href: "/services/privacy-audit",
                 icon: FileSearch,
               },
               {
-                title: "I need a full privacy programme",
-                sub: "Privacy Program Build",
-                desc: "From policies and DSAR workflows to staff training and vendor templates. We build the whole thing alongside you, then hand it over properly.",
-                href: "/services/program-build",
-                icon: Layers,
-              },
-              {
-                title: "We're building with AI",
-                sub: "AI Governance Advisory",
-                desc: "Using LLMs in your product? We help you understand the risks, write sensible policies, and make sure you're ready for where regulation is heading.",
-                href: "/services/ai-governance",
-                icon: Brain,
-              },
-              {
-                title: "We handle health or medical data",
+                title: "We secure your health data",
                 sub: "HIPAA & Health Data",
                 desc: "Whether you're a covered entity, a business associate, or a wellness app — we cut through the confusion and tell you exactly what applies to you.",
                 href: "/services/hipaa",
                 icon: Shield,
               },
               {
-                title: "We train our teams on privacy",
+                title: "We build your privacy program",
+                sub: "Privacy Program Build",
+                desc: "From policies and DSAR workflows to staff training and vendor templates. We build the whole thing alongside you, then hand it over properly.",
+                href: "/services/program-build",
+                icon: Layers,
+              },
+              {
+                title: "We guide your AI strategy",
+                sub: "AI Governance Advisory",
+                desc: "Using LLMs in your product? We help you understand the risks, write sensible policies, and make sure you're ready for where regulation is heading.",
+                href: "/services/ai-governance",
+                icon: Brain,
+              },
+
+              {
+                title: "We train your teams on privacy",
                 sub: "Training & Workshops",
                 desc: "Live, tailored sessions for product managers, engineers, marketers, and leadership. Real-world examples. No death-by-PowerPoint.",
                 href: "/training",
                 icon: Users,
-              },
-              {
-                title: "Something's gone wrong",
-                sub: "Regulatory & Breach Response",
-                desc: "Breach, regulator letter, DSAR backlog — we've handled them all. We help you respond quickly, calmly, and in a way that limits your exposure.",
-                href: "/services/regulatory-response",
-                icon: AlertCircle,
               },
             ].map((s, i) => (
               <motion.div
@@ -516,7 +507,7 @@ export default function Home() {
             </motion.p>
             <motion.div variants={fade} custom={3} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-[#E8B84B] text-[#3D0F1D] hover:bg-[#F0C968] rounded-none px-14 py-8 text-xl h-auto font-bold shadow-2xl shadow-[#E8B84B]/25 hover:shadow-[#E8B84B]/50 hover:scale-[1.02] transition-all">
-                <Link href="/contact">Book a Free Call <ArrowRight className="w-5 h-5 ml-2 inline" /></Link>
+                <Link href="/contact">Let's Talk <ArrowRight className="w-5 h-5 ml-2 inline" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/8 rounded-none px-14 py-8 text-xl h-auto bg-transparent transition-all">
                 <Link href="/services">Explore Our Services</Link>
