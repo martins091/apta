@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Linkedin, Calendar } from "lucide-react";
 import {
   ArrowRight, CheckCircle2, ChevronRight,
   Brain, FileSearch, Layers, AlertCircle, Shield, Users, Star,
@@ -11,7 +12,7 @@ import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const CYCLING_WORDS = ["Complex.", "Confusing."];
+const CYCLING_WORDS = ["Complex.", "Confusing.", "Advantage"];
 
 function useCountUp(target: number, duration = 2.2) {
   const [count, setCount] = useState(0);
@@ -157,170 +158,197 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─────────────── WHAT WE DO (simple intro) ─────────────── */}
-      <section className="py-28 bg-background">
-        <div className="container mx-auto px-6 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+{/* ─────────────── WHAT WE DO (simple intro) ─────────────── */}
+<section className="py-28 bg-background">
+  <div className="container mx-auto px-6 lg:px-16">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
-            {/* Left — photo */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
-            >
-              <div className="aspect-[4/5] overflow-hidden relative bg-[#1A0A12]">
-                <img
-                  src={`${import.meta.env.BASE_URL}images/headshot.png`}
-                  alt="Chuma Akana — Founder"
-                  className="object-cover w-full h-full opacity-90"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D050A]/90 via-[#0D050A]/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <div className="w-8 h-[2px] bg-[#E8B84B] mb-3" />
-                  <h3 className="text-2xl font-serif text-white mb-1">Chuma Akana</h3>
-                  <p className="font-mono text-xs text-white/55 uppercase tracking-widest">Founder & Lead Consultant</p>
-                </div>
-              </div>
-              <div className="absolute -top-5 -left-5 w-28 h-28 border-l-2 border-t-2 border-[#E8B84B]/35 pointer-events-none" />
-              <div className="absolute -bottom-5 -right-5 w-28 h-28 border-r-2 border-b-2 border-[#1A7A8A]/35 pointer-events-none" />
-            </motion.div>
-
-            {/* Right — text */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              variants={stagger}
-            >
-              <motion.p variants={fade} custom={0} className="text-xs font-mono tracking-[0.25em] uppercase text-[#1A7A8A] mb-5 flex items-center gap-3">
-                <span className="w-6 h-px bg-[#1A7A8A]" /> Why clients choose us
-              </motion.p>
-              <motion.h2 variants={fade} custom={1} className="text-4xl md:text-5xl font-serif text-foreground mb-7 leading-[1.1]">
-                We speak human,<br />
-                <span className="italic text-[#5C1A2E]">not legalese.</span>
-              </motion.h2>
-              <motion.p variants={fade} custom={2} className="text-lg font-sans text-muted-foreground leading-relaxed mb-5">
-                Privacy rules can feel like they were written to confuse people. We're here to change that. Whether you're a startup that just got your first enterprise customer asking for a DPA, or a growing company preparing for the EU market — we meet you where you are.
-              </motion.p>
-              <motion.p variants={fade} custom={3} className="text-lg font-sans text-muted-foreground leading-relaxed mb-10">
-                No scare tactics. No jargon-filled reports that gather dust. Just a straightforward plan, built with your team, that actually gets done.
-              </motion.p>
-              <motion.div variants={fade} custom={4}>
-                <ul className="space-y-3 mb-10">
-                  {[
-                    "We explain every step in plain English",
-                    "We work alongside your team, not above them",
-                    "Practical outcomes you can implement immediately",
-                    "No hidden retainers — scoped, milestone-based work",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-foreground/80 font-sans">
-                      <CheckCircle2 className="w-4 h-4 text-[#E8B84B] shrink-0" strokeWidth={2.5} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-              <motion.div variants={fade} custom={5} className="flex flex-wrap gap-4">
-
-                <Button asChild variant="outline" className="border-[#5C1A2E]/30 text-[#5C1A2E] hover:bg-[#5C1A2E]/5 rounded-none px-7 py-5 h-auto text-sm font-bold">
-                  <Link href="/services">Our Services</Link>
-                </Button>
-              </motion.div>
-            </motion.div>
+      {/* Left — photo */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        className="relative"
+      >
+        <div className="aspect-[4/5] overflow-hidden relative bg-[#1A0A12]">
+          <img
+            src={`${import.meta.env.BASE_URL}images/headshot.png`}
+            alt="Chuma Akana — Founder"
+            className="object-cover w-full h-full opacity-90"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D050A]/90 via-[#0D050A]/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-8">
+            <div className="w-8 h-[2px] bg-[#E8B84B] mb-3" />
+            <h3 className="text-2xl font-serif text-white mb-1">Chuma Akana</h3>
+            <p className="font-mono text-xs text-white/55 uppercase tracking-widest">Founder & Lead Consultant</p>
           </div>
         </div>
-      </section>
+        <div className="absolute -top-5 -left-5 w-28 h-28 border-l-2 border-t-2 border-[#E8B84B]/35 pointer-events-none" />
+        <div className="absolute -bottom-5 -right-5 w-28 h-28 border-r-2 border-b-2 border-[#1A7A8A]/35 pointer-events-none" />
+      </motion.div>
 
-      {/* ─────────────── SERVICES ─────────────── */}
-      <section className="py-28 bg-[#0D050A] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,_#180814_0%,_#0D050A_100%)]" />
-        <div className="container mx-auto px-6 lg:px-16 relative z-10">
-          <motion.div
-            initial="hidden" whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="text-center max-w-2xl mx-auto mb-16"
-          >
-            <motion.p variants={fade} custom={0} className="text-xs font-mono tracking-[0.25em] uppercase text-[#E8B84B] mb-4">
-              How we help
-            </motion.p>
-            <motion.h2 variants={fade} custom={1} className="text-4xl md:text-5xl font-serif text-white mb-5 leading-tight">
-              What do you need help with?
-            </motion.h2>
-            <motion.p variants={fade} custom={2} className="text-lg text-white/55 font-sans leading-relaxed">
-              We cover the full spectrum of privacy and data protection — from quick audits to building your entire programme from scratch.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden" whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={stagger}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5"
-          >
+      {/* Right — text */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        variants={stagger}
+      >
+        <motion.p variants={fade} custom={0} className="text-xs font-mono tracking-[0.25em] uppercase text-[#1A7A8A] mb-5 flex items-center gap-3">
+          <span className="w-6 h-px bg-[#1A7A8A]" /> Why Clients Choose Us
+        </motion.p>
+        <motion.h2 variants={fade} custom={1} className="text-4xl md:text-5xl font-serif text-foreground mb-7 leading-[1.1]">
+          We know trust is the<br />
+          <span className="italic text-[#5C1A2E]">foundation of business.</span>
+        </motion.h2>
+        <motion.p variants={fade} custom={2} className="text-lg font-sans text-muted-foreground leading-relaxed mb-5">
+          Whether you're a startup that just got your first enterprise customer asking for a DPA, or a healthcare covered entity navigating HIPAA obligations — we meet you where you are.
+        </motion.p>
+        <motion.p variants={fade} custom={3} className="text-lg font-sans text-muted-foreground leading-relaxed mb-10">
+          No generic advice that goes nowhere. Just a straightforward plan, built with your team, that actually gets done.
+        </motion.p>
+        <motion.div variants={fade} custom={4}>
+          <ul className="space-y-3 mb-10">
             {[
-              {
-                title: "We uncover your privacy risks",
-                sub: "Privacy Audit & Gap Analysis",
-                desc: "We review everything — your data flows, vendor contracts, consent mechanisms, and policies — and tell you exactly what needs fixing and in what order.",
-                href: "/services/privacy-audit",
-                icon: FileSearch,
-              },
-              {
-                title: "We secure your health data",
-                sub: "HIPAA & Health Data",
-                desc: "Whether you're a covered entity, a business associate, or a wellness app — we cut through the confusion and tell you exactly what applies to you.",
-                href: "/services/hipaa",
-                icon: Shield,
-              },
-              {
-                title: "We build your privacy program",
-                sub: "Privacy Program Build",
-                desc: "From policies and DSAR workflows to staff training and vendor templates. We build the whole thing alongside you, then hand it over properly.",
-                href: "/services/program-build",
-                icon: Layers,
-              },
-              {
-                title: "We guide your AI strategy",
-                sub: "AI Governance Advisory",
-                desc: "Using LLMs in your product? We help you understand the risks, write sensible policies, and make sure you're ready for where regulation is heading.",
-                href: "/services/ai-governance",
-                icon: Brain,
-              },
-
-              {
-                title: "We train your teams on privacy",
-                sub: "Training & Workshops",
-                desc: "Live, tailored sessions for product managers, engineers, marketers, and leadership. Real-world examples. No death-by-PowerPoint.",
-                href: "/training",
-                icon: Users,
-              },
-            ].map((s, i) => (
-              <motion.div
-                key={i}
-                variants={fade}
-                custom={i}
-                className="group bg-[#0D050A] p-9 relative overflow-hidden hover:bg-[#160910] transition-all duration-300 cursor-pointer"
-              >
-                <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#E8B84B] to-[#1A7A8A] group-hover:w-full transition-all duration-500" />
-                <div className="w-11 h-11 bg-white/4 group-hover:bg-[#E8B84B]/10 flex items-center justify-center mb-6 transition-colors duration-300">
-                  <s.icon className="w-5 h-5 text-[#E8B84B]" strokeWidth={1.5} />
-                </div>
-                <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#1A7A8A] mb-2">{s.sub}</p>
-                <h3 className="text-lg font-serif font-bold text-white mb-3 leading-snug">{s.title}</h3>
-                <p className="text-sm text-white/50 font-sans leading-relaxed mb-6">{s.desc}</p>
-                <Link href={s.href} className="inline-flex items-center text-xs font-mono tracking-[0.2em] uppercase text-[#1A7A8A] group-hover:text-[#E8B84B] transition-colors duration-300">
-                  Find out more <ChevronRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
+              "We explain every step in plain English",
+              "We work alongside your team, not around them",
+              "Practical outcomes you can implement immediately",
+            ].map((item, i) => (
+              <li key={i} className="flex items-center gap-3 text-foreground/80 font-sans">
+                <CheckCircle2 className="w-4 h-4 text-[#E8B84B] shrink-0" strokeWidth={2.5} />
+                {item}
+              </li>
             ))}
-          </motion.div>
-        </div>
-      </section>
+          </ul>
+        </motion.div>
+        
+        {/* Connected Links */}
+        <motion.div variants={fade} custom={5} className="mb-6">
+          <p className="text-xs font-mono tracking-[0.25em] uppercase text-[#1A7A8A] mb-4 flex items-center gap-3">
+            <span className="w-6 h-px bg-[#1A7A8A]" /> Connect
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="https://www.linkedin.com/in/chuma-akana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-[#1A7A8A] transition-colors"
+            >
+              <Linkedin className="w-4 h-4" />
+              LinkedIn
+            </a>
+            <a
+              href="https://calendly.com/akanachuma/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-[#1A7A8A] transition-colors"
+            >
+              <Calendar className="w-4 h-4" />
+              Schedule a Call
+            </a>
+          </div>
+        </motion.div>
 
+        <motion.div variants={fade} custom={6} className="flex flex-wrap gap-4">
+          <Button asChild className="bg-[#E8B84B] text-[#3D0F1D] hover:bg-[#F0C968] rounded-none px-7 py-5 h-auto text-sm font-bold shadow-md">
+            <Link href="/contact">Let's Talk</Link>
+          </Button>
+          <Button asChild variant="outline" className="border-[#5C1A2E]/30 text-[#5C1A2E] hover:bg-[#5C1A2E]/5 rounded-none px-7 py-5 h-auto text-sm font-bold">
+            <Link href="/services">Our Services</Link>
+          </Button>
+        </motion.div>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
+    {/* ─────────────── SERVICES ─────────────── */}
+<section className="py-28 bg-[#0D050A] relative overflow-hidden">
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,_#180814_0%,_#0D050A_100%)]" />
+  <div className="container mx-auto px-6 lg:px-16 relative z-10">
+    <motion.div
+      initial="hidden" whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={stagger}
+      className="text-center max-w-2xl mx-auto mb-16"
+    >
+      <motion.p variants={fade} custom={0} className="text-xs font-mono tracking-[0.25em] uppercase text-[#E8B84B] mb-4">
+        How we help
+      </motion.p>
+      <motion.h2 variants={fade} custom={1} className="text-4xl md:text-5xl font-serif text-white mb-5 leading-tight">
+        What do you need help with?
+      </motion.h2>
+      <motion.p variants={fade} custom={2} className="text-lg text-white/55 font-sans leading-relaxed">
+        We cover the full spectrum of privacy and data protection — from quick audits to building your entire programme from scratch.
+      </motion.p>
+    </motion.div>
+
+    <motion.div
+      initial="hidden" whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={stagger}
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5"
+    >
+      {[
+        {
+          title: "We uncover your privacy risks",
+          sub: "Privacy Audit & Gap Analysis",
+          desc: "We review everything — your data flows, vendor contracts, consent mechanisms, and policies — and tell you exactly what needs fixing and in what order.",
+          href: "/services/privacy-audit",
+          icon: FileSearch,
+        },
+        {
+          title: "We help safeguard health data",
+          sub: "HIPAA & Health Data",
+          desc: "Whether you're a covered entity, a business associate, or a wellness app — we cut through the confusion and tell you exactly what applies to you.",
+          href: "/services/hipaa",
+          icon: Shield,
+        },
+        {
+          title: "We build your privacy program",
+          sub: "Privacy Program Build",
+          desc: "From policies and DSAR workflows to staff training and vendor templates. We build the whole thing alongside you, then hand it over properly.",
+          href: "/services/program-build",
+          icon: Layers,
+        },
+        {
+          title: "We guide your AI strategy",
+          sub: "AI Governance Advisory",
+          desc: "Using LLMs in your product? We help you understand the risks, write sensible policies, and make sure you're ready for where regulation is heading.",
+          href: "/services/ai-governance",
+          icon: Brain,
+        },
+        {
+          title: "We train your teams on privacy",
+          sub: "Training & Workshops",
+          desc: "Live, tailored sessions for product managers, marketers, and leadership. Real-world examples. No death-by-PowerPoint.",
+          href: "/training",
+          icon: Users,
+        },
+      ].map((s, i) => (
+        <motion.div
+          key={i}
+          variants={fade}
+          custom={i}
+          className="group bg-[#0D050A] p-9 relative overflow-hidden hover:bg-[#160910] transition-all duration-300 cursor-pointer"
+        >
+          <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#E8B84B] to-[#1A7A8A] group-hover:w-full transition-all duration-500" />
+          <div className="w-11 h-11 bg-white/4 group-hover:bg-[#E8B84B]/10 flex items-center justify-center mb-6 transition-colors duration-300">
+            <s.icon className="w-5 h-5 text-[#E8B84B]" strokeWidth={1.5} />
+          </div>
+          <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-[#1A7A8A] mb-2">{s.sub}</p>
+          <h3 className="text-lg font-serif font-bold text-white mb-3 leading-snug">{s.title}</h3>
+          <p className="text-sm text-white/50 font-sans leading-relaxed mb-6">{s.desc}</p>
+          <Link href={s.href} className="inline-flex items-center text-xs font-mono tracking-[0.2em] uppercase text-[#1A7A8A] group-hover:text-[#E8B84B] transition-colors duration-300">
+            Find out more <ChevronRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
       {/* ─────────────── STATS ─────────────── */}
       <section className="py-20 bg-[#5C1A2E] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(232,184,75,0.18)_0%,_transparent_60%)]" />
@@ -457,10 +485,6 @@ export default function Home() {
             >
               <Accordion type="single" collapsible className="w-full">
                 {[
-                  {
-                    q: "Do we need a lawyer or a consultant?",
-                    a: "Great question. Lawyers give legal opinions and handle formal legal work. We operationalise privacy — meaning we sit with your engineering team and figure out how to actually build the compliant system. We often work side-by-side with your legal counsel, and it works really well.",
-                  },
                   {
                     q: "We're a small startup. Is this for us?",
                     a: "Absolutely. In fact, getting things right early is much cheaper than retrofitting privacy later. We have engagement formats that are specifically designed for early-stage and growth-stage companies. We work with your budget, not against it.",

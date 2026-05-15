@@ -23,7 +23,7 @@ export const SERVICES: ServiceData[] = [
     hero: "You can't fix what you haven't mapped. Our audit gives you the full picture — every data flow, every vendor, every gap — so you can act on evidence, not assumptions.",
     intro: [
       "Our Privacy Audit is a structured, evidence-based review of how your organisation collects, processes, stores, and shares personal data. We assess your current posture against the regulatory frameworks that apply to your business — GDPR, CCPA, CPA, VCDPA, HIPAA, or the emerging US state law patchwork — and deliver a plain-English report that tells you exactly what needs to change and in what order.",
-      "Unlike a checkbox compliance review, our audit goes to the source: your actual data flows, your vendor contracts, your consent mechanisms, your privacy notices. We interview your technical, product, legal, and HR leads. We review your vendor DPAs. We test your DSAR workflow. Then we score every finding by risk — so your team knows what to fix first.",
+      "Unlike a checkbox compliance review, our audit goes to the source: your actual data flows, your vendor contracts, your consent mechanisms, your privacy notices. We interview your technical, product, and HR leads. We review your vendor DPAs. We test your DSAR workflow. Then we score every finding by risk — so your team knows what to fix first.",
     ],
     whoFor: [
       "SaaS companies preparing for enterprise sales due diligence",
@@ -42,12 +42,12 @@ export const SERVICES: ServiceData[] = [
     ],
     process: [
       { step: "Week 1", title: "Scoping & Kickoff", desc: "We define the regulatory scope, agree the interview schedule, and brief your stakeholders on what to expect." },
-      { step: "Week 2", title: "Discovery", desc: "Stakeholder interviews across product, engineering, marketing, HR, and legal. Document and contract review." },
+      { step: "Week 2", title: "Discovery", desc: "Stakeholder interviews across product, marketing, HR, and compliance. Document and contract review." },
       { step: "Week 3", title: "Assessment", desc: "We map your data flows, score findings against applicable frameworks, and draft the gap analysis." },
       { step: "Week 4", title: "Delivery", desc: "Final report delivered. We walk your leadership team through the findings and answer questions." },
     ],
     faqs: [
-      { q: "How disruptive is the audit to our team?", a: "We try to keep it light. Typically 3–5 hours of stakeholder time spread over the first two weeks, plus document access. We work around your sprint cycles and engineering freeze dates." },
+      { q: "How disruptive is the audit to our team?", a: "We try to keep it light. Typically 3–5 hours of stakeholder time spread over the first two weeks, plus document access. We work around your sprint cycles and release freeze dates." },
       { q: "Do you need access to production systems?", a: "No. We work from documentation, data flow diagrams, vendor lists, and stakeholder interviews. We don't need database access or system credentials." },
       { q: "What happens after you deliver the report?", a: "We include 30 days of Q&A support. If you'd like us to stay on for implementation, we can scope a Privacy Program Build engagement." },
     ],
@@ -61,7 +61,7 @@ export const SERVICES: ServiceData[] = [
     hero: "Policies without systems are just documents. We build the engine: the policies, the processes, the training, and the technical controls that make your privacy program run day to day.",
     intro: [
       "A Privacy Program Build is our most comprehensive engagement. It's designed for companies that need to stand up a privacy function from the ground up — or for organisations whose program has gaps that a simple policy update won't fix.",
-      "We work alongside your legal, engineering, and people teams to design and implement a complete privacy operating framework: from the external notices your customers read to the internal procedures your teams follow to the technical controls your engineers build. We don't hand you a template pack and disappear — we stay until it works.",
+      "We work alongside your compliance and people teams to design and implement a complete privacy operating framework: from the external notices your customers read to the internal procedures your teams follow to the technical controls your teams build. We don't hand you a template pack and disappear — we stay until it works.",
     ],
     whoFor: [
       "Companies building a privacy function for the first time",
@@ -83,13 +83,13 @@ export const SERVICES: ServiceData[] = [
     process: [
       { step: "Phase 1", title: "Scoping & Baseline", desc: "We run a rapid baseline assessment to understand your current state, regulatory exposure, and priority gaps." },
       { step: "Phase 2", title: "Design", desc: "We design your program architecture: policies, procedures, data flows, roles, and technical requirements." },
-      { step: "Phase 3", title: "Build & Implement", desc: "We draft every document, run staff training, and work with engineering to embed privacy into your SDLC." },
+      { step: "Phase 3", title: "Build & Implement", desc: "We draft every document, run staff training, and work with teams to embed privacy into your SDLC." },
       { step: "Phase 4", title: "Handoff & Embed", desc: "We hand off all materials, train your internal owner, and provide 90 days of support to answer questions as the program matures." },
     ],
     faqs: [
       { q: "How long does a full program build take?", a: "For most mid-market companies, 8–12 weeks from kickoff to handoff. Complex organisations with multiple jurisdictions or business lines may require 16–20 weeks." },
       { q: "Do we need a DPO in place before we start?", a: "No. Many clients don't have a DPO. We can advise on whether you need to appoint one under GDPR and can help you define the role before you hire." },
-      { q: "Can you work with our existing legal counsel?", a: "Absolutely. We regularly partner with outside counsel on these engagements. We handle the operational build; they handle the legal opinions." },
+      { q: "Can you work with our existing compliance advisors?", a: "Absolutely. We regularly partner with external advisors on these engagements. We handle the operational build; they handle the formal advice." },
     ],
     icon: Layers,
   },
@@ -101,12 +101,12 @@ export const SERVICES: ServiceData[] = [
     hero: "AI is moving faster than the law — but the law is catching up fast. We help you stay ahead of both: building governance frameworks that let your team ship AI features without creating regulatory, reputational, or technical debt.",
     intro: [
       "The EU AI Act is in force. FTC enforcement actions over AI are accelerating. US state attorneys general are watching. And your customers are asking harder questions about how their data is used to train or inform AI decisions.",
-      "Our AI Governance Advisory helps you assess the privacy and governance risks in your AI stack — whether you're building proprietary models, integrating third-party LLMs, or using off-the-shelf AI tools in your product. We create the frameworks your engineering, legal, and product teams need to move fast without creating liability.",
+      "Our AI Governance Advisory helps you assess the privacy and governance risks in your AI stack — whether you're building proprietary models, integrating third-party LLMs, or using off-the-shelf AI tools in your product. We create the frameworks your compliance and product teams need to move fast without creating liability.",
     ],
     whoFor: [
       "Product teams integrating LLMs or generative AI into customer-facing features",
-      "Engineering teams building or fine-tuning ML models on customer data",
-      "Legal and compliance teams needing to assess AI vendor contracts",
+      "Teams building or fine-tuning ML models on customer data",
+      "Compliance teams needing to assess AI vendor contracts",
       "Companies subject to the EU AI Act's high-risk system requirements",
       "Organisations receiving inbound vendor questionnaires about AI governance",
     ],
@@ -140,7 +140,7 @@ export const SERVICES: ServiceData[] = [
     hero: "Digital health has never been more complex. HIPAA applies to covered entities and their business associates — but the FTC's Health Breach Notification Rule and a new wave of state health-data laws now reach far beyond. We help you understand exactly what applies to you.",
     intro: [
       "Health data is the most sensitive category of personal information, and the regulatory landscape around it has changed dramatically in the last three years. The FTC's Health Breach Notification Rule now applies to health apps and wearables that aren't traditional HIPAA covered entities. States like Washington, Nevada, and Connecticut have passed standalone consumer health data laws. And HIPAA's omnibus requirements continue to trip up organisations that haven't done a formal risk assessment.",
-      "We help digital health companies, health-tech startups, traditional healthcare providers, and their technology vendors understand exactly which rules apply to them — and what they need to do about it. Our advisory is practical, not theoretical: we work with your product and engineering teams to make compliance operational.",
+      "We help digital health companies, health-tech startups, traditional healthcare providers, and their technology vendors understand exactly which rules apply to them — and what they need to do about it. Our advisory is practical, not theoretical: we work with your product and teams to make compliance operational.",
     ],
     whoFor: [
       "Digital health apps and wearables collecting health or wellness data",
@@ -155,13 +155,13 @@ export const SERVICES: ServiceData[] = [
       "FTC Health Breach Notification Rule applicability assessment",
       "State health privacy law gap analysis (WA, NV, CT, and others)",
       "Business Associate Agreement (BAA) template and review checklist",
-      "Minimum Necessary standard implementation guide for engineering",
+      "Minimum Necessary standard implementation guide",
       "Breach response playbook with 60-day HHS notification workflow",
     ],
     process: [
       { step: "Phase 1", title: "Applicability Review", desc: "We determine which laws apply to your specific product, business model, and data flows — including state health data laws often overlooked." },
       { step: "Phase 2", title: "Risk Assessment", desc: "For HIPAA-covered operations, we complete a formal Security Rule risk assessment and identify technical, administrative, and physical safeguard gaps." },
-      { step: "Phase 3", title: "Remediation", desc: "We draft or update your BAAs, workforce policies, and incident response playbook. We work with engineering on minimum-necessary controls." },
+      { step: "Phase 3", title: "Remediation", desc: "We draft or update your BAAs, workforce policies, and incident response playbook. We work with teams on minimum-necessary controls." },
       { step: "Phase 4", title: "Ongoing Support", desc: "Health data law is fast-moving. We offer retainer advisory for organisations that need ongoing counsel as state laws proliferate." },
     ],
     faqs: [
@@ -197,14 +197,14 @@ export const SERVICES: ServiceData[] = [
       "Board and executive briefing on liability exposure and disclosure obligations",
     ],
     process: [
-      { step: "Hour 0–24", title: "Triage", desc: "We assess scope, identify notification obligations, and advise on containment. We work alongside your incident response and legal teams." },
+      { step: "Hour 0–24", title: "Triage", desc: "We assess scope, identify notification obligations, and advise on containment. We work alongside your incident response teams." },
       { step: "Hour 24–72", title: "Notification", desc: "Where required, we draft and review regulator notifications. We help you say what you need to say — clearly, factually, and without unnecessary admission." },
       { step: "Week 2–4", title: "Individual Notice & Response", desc: "Where affected individuals must be notified, we manage the process. For DSARs, we triage and operate the response pipeline." },
       { step: "Ongoing", title: "Remediation & Engagement", desc: "We support you through regulator follow-up, enforcement undertakings, and the post-incident audit that most regulators require." },
     ],
     faqs: [
       { q: "We think we've had a breach but we're not sure. Should we call you?", a: "Yes — immediately. One of the most common mistakes is waiting until you're certain before seeking advice. The 72-hour clock under GDPR starts from when you become aware of a likely breach, not when you've confirmed every detail." },
-      { q: "Can you work alongside our external legal counsel?", a: "Always. We operate as the operational privacy advisors; your lawyers handle the legal privilege and formal legal advice. This is the standard model and we're experienced at working in that structure." },
+      { q: "Can you work alongside our external advisors?", a: "Always. We operate as the operational privacy advisors; your external team handles formal advice. This is the standard model and we're experienced at working in that structure." },
       { q: "We have 200 overdue DSARs. Can you help?", a: "Yes. DSAR backlogs are one of the most common urgent engagements we handle. We triage by risk, set up a response pipeline, and work through the backlog systematically — while helping you build a process to prevent it happening again." },
     ],
     icon: AlertCircle,

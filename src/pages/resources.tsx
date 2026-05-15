@@ -93,7 +93,7 @@ export default function Resources() {
             ))}
           </div>
         </div>
-      </section>
+      </section>66
 
       {/* Articles Grid */}
       <section className="py-24 bg-muted/30">

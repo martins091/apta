@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Clock, Users, Award, ArrowLeft, Calendar } from "lucide-react";
+import { ArrowRight, CheckCircle2, Award, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { COURSES } from "@/data/training";
 
@@ -85,7 +85,7 @@ export default function TrainingDetail() {
                 transition={{ delay: 0.05 }}
                 className="text-3xl md:text-4xl font-serif text-foreground mb-6"
               >
-                Built for practitioners, not just lawyers.
+                Built for practitioners, by practitioners.
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
@@ -127,39 +127,15 @@ export default function TrainingDetail() {
                 <h3 className="text-lg font-serif text-foreground">Course details</h3>
                 <ul className="space-y-4 font-mono text-xs">
                   <li className="flex items-center gap-3 text-muted-foreground">
-                    <Clock className="w-4 h-4 text-[#1A7A8A] shrink-0" />
-                    <div>
-                      <span className="block text-foreground font-medium">{course.duration}</span>
-                    </div>
-                  </li>
-                  <li className="flex items-center gap-3 text-muted-foreground">
-                    <Users className="w-4 h-4 text-[#1A7A8A] shrink-0" />
-                    <div>
-                      <span className="block text-foreground font-medium">{course.format}</span>
-                    </div>
-                  </li>
-                  <li className="flex items-center gap-3 text-muted-foreground">
                     <Award className="w-4 h-4 text-[#1A7A8A] shrink-0" />
                     <div>
                       <span className="block text-foreground font-medium">{course.level}</span>
                     </div>
                   </li>
                 </ul>
-                <div className="border-t border-border pt-5">
-                  <p className="text-xs font-mono text-muted-foreground mb-1">Investment</p>
-                  <p className="text-sm font-sans text-foreground font-medium">{course.price}</p>
-                </div>
                 <Button asChild className="w-full bg-[#5C1A2E] text-white hover:bg-[#7A2240] rounded-none py-4 h-auto font-bold text-sm">
                   <Link href="/contact">Enrol Your Team <ArrowRight className="w-3.5 h-3.5 ml-1.5 inline" /></Link>
                 </Button>
-                <a
-                  href="https://calendly.com/akanachuma/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 text-sm text-[#1A7A8A] hover:text-[#5C1A2E] transition-colors font-medium"
-                >
-                  <Calendar className="w-3.5 h-3.5" /> Book a scoping call
-                </a>
               </div>
             </motion.div>
           </div>
@@ -205,7 +181,7 @@ export default function TrainingDetail() {
         <div className="container mx-auto px-6 lg:px-16 max-w-5xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <motion.p variants={fade} custom={0} className="flex items-center gap-3 text-[11px] font-mono tracking-[0.3em] uppercase text-[#1A7A8A] mb-4">
-              <span className="w-6 h-px bg-[#1A7A8A]" /> Before you enrol
+              <span className="w-6 h-px bg-[#1A7A8A]" /> Before you enquire
             </motion.p>
             <motion.h2 variants={fade} custom={1} className="text-3xl md:text-4xl font-serif text-foreground mb-10">
               Common questions
@@ -234,7 +210,7 @@ export default function TrainingDetail() {
             </div>
             <div className="flex gap-4">
               <Button asChild className="bg-[#5C1A2E] text-white hover:bg-[#7A2240] rounded-none px-8 py-4 h-auto font-bold">
-                <Link href="/contact">Enrol Now</Link>
+                <Link href="/contact">Enquire Now</Link>
               </Button>
               <Button asChild variant="outline" className="border-[#5C1A2E]/30 text-[#5C1A2E] hover:bg-[#5C1A2E]/5 rounded-none px-8 py-4 h-auto">
                 <Link href="/training">All Courses</Link>
