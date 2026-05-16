@@ -48,6 +48,7 @@ const NAV: NavItem[] = [
     ],
   },
   { label: "Resources", href: "/resources" },
+  { label: "Clarity Guide", href: "/guide" },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {

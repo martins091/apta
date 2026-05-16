@@ -19,6 +19,7 @@ import NotFound from "@/pages/not-found";
 // Cookie Consent
 import CookieConsent from "@/components/CookieConsent";
 import ArticleDetail from "./pages/resources/[slug]";
+import PrivacyCareerGuide from "./pages/clarity-guide";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ function Router() {
       <Route path="/training/:slug" component={TrainingDetail} />
       <Route path="/resources" component={Resources} />
       <Route path="/resources/:slug" component={ArticleDetail} />
+      <Route path='/guide' component={PrivacyCareerGuide} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
