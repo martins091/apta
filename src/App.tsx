@@ -18,6 +18,7 @@ import NotFound from "@/pages/not-found";
 
 // Cookie Consent
 import CookieConsent from "@/components/CookieConsent";
+import ArticleDetail from "./pages/resources/[slug]";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ function Router() {
       <Route path="/training" component={Training} />
       <Route path="/training/:slug" component={TrainingDetail} />
       <Route path="/resources" component={Resources} />
+      <Route path="/resources/:slug" component={ArticleDetail} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>

@@ -1,49 +1,40 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, User } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
+// API configuration
+const API_URL = 'https://apta-server.onrender.com/api';
+
 export default function Resources() {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     document.title = "Resources — APTA Foundry";
     window.scrollTo(0, 0);
+    fetchArticles();
   }, []);
 
-  const articles = [
-    {
-      category: "AI Governance",
-      title: "Drafting an Acceptable Use Policy for Generative AI",
-      date: "October 12, 2024",
-      readTime: "6 min read"
-    },
-    {
-      category: "US Privacy Law",
-      title: "What the CPRA's Latest Regulations Mean for B2B Startups",
-      date: "September 28, 2024",
-      readTime: "8 min read"
-    },
-  
-    {
-      category: "GDPR",
-      title: "Demystifying Data Transfer Impact Assessments (DTIAs)",
-      date: "July 02, 2024",
-      readTime: "10 min read"
-    },
-  
-    {
-      category: "US Privacy Law",
-      title: "Navigating Health Data Outside of HIPAA",
-      date: "May 05, 2024",
-      readTime: "6 min read"
+  const fetchArticles = async () => {
+    try {
+      const response = await fetch(`${API_URL}/articles`);
+      if (!response.ok) throw new Error('Failed to fetch articles');
+      const data = await response.json();
+      setArticles(data);
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -93,7 +84,7 @@ export default function Resources() {
             ))}
           </div>
         </div>
-      </section>66
+      </section>
 
       {/* Articles Grid */}
       <section className="py-24 bg-muted/30">
@@ -102,37 +93,81 @@ export default function Resources() {
             <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-8">Latest Articles</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.map((article, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                className="bg-card border border-card-border p-6 group hover:border-secondary/50 transition-colors cursor-pointer flex flex-col h-full"
-              >
-                <div className="mb-6">
-                  <span className="inline-block px-3 py-1 bg-secondary/10 text-secondary font-mono text-xs uppercase tracking-wider">
-                    {article.category}
-                  </span>
-                </div>
-                <h3 className="text-xl font-serif font-bold text-foreground mb-4 group-hover:text-primary transition-colors line-clamp-3">
-                  {article.title}
-                </h3>
-                <div className="mt-auto pt-6 flex items-center justify-between text-muted-foreground font-mono text-xs uppercase tracking-wider border-t border-border">
-                  <span>{article.date}</span>
-                  <span>{article.readTime}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {loading ? (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground">Loading articles...</p>
+            </div>
+          ) : articles.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground">No articles yet. Check back soon!</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {articles.map((article, i) => (
+                <Link key={article.id || i} href={`/resources/${article.slug}`}>
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    className="bg-card border border-card-border p-6 group hover:border-secondary/50 transition-colors cursor-pointer flex flex-col h-full"
+                  >
+                    <div className="mb-6">
+                      <span className="inline-block px-3 py-1 bg-secondary/10 text-secondary font-mono text-xs uppercase tracking-wider">
+                        {article.category}
+                      </span>
+                    </div>
+                    
+                    {/* Featured Image */}
+                    {article.featuredImage && (
+                      <div className="mb-4 -mx-6 overflow-hidden">
+                        <img 
+                          src={`https://apta-server.onrender.com${article.featuredImage}`}
+                          alt={article.title}
+                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    )}
+                    
+                    <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-3">
+                      {article.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground font-sans text-sm mb-4 line-clamp-2">
+                      {article.excerpt}
+                    </p>
+                    
+                    {/* Author Info */}
+                    {article.author && article.author.name && (
+                      <div className="mb-4 flex items-center gap-2">
+                        <User className="w-3 h-3 text-muted-foreground" />
+                        <span className="text-xs font-mono text-muted-foreground">
+                          {article.author.name}
+                          {article.author.role && ` · ${article.author.role}`}
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className="mt-auto pt-6 flex items-center justify-between text-muted-foreground font-mono text-xs uppercase tracking-wider border-t border-border">
+                      <span>{article.date}</span>
+                      <span>{article.readTime}</span>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+          )}
           
-          <div className="mt-16 text-center">
-            <Button variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-6 h-auto font-sans">
-              Load More Articles
-            </Button>
-          </div>
+          {articles.length > 6 && (
+            <div className="mt-16 text-center">
+              <Button variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-6 h-auto font-sans">
+                Load More Articles
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
