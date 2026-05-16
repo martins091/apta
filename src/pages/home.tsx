@@ -12,7 +12,7 @@ import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const CYCLING_WORDS = ["Complex.", "Confusing.", "Advantage"];
+const CYCLING_WORDS = ["Complex.", "Confusing.", "Your Advantage"];
 
 function useCountUp(target: number, duration = 2.2) {
   const [count, setCount] = useState(0);
