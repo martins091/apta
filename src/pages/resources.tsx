@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link, useLocation } from "wouter";
-import { ArrowRight, Download, User, BookOpen } from "lucide-react";
+import { ArrowRight, Download, User, BookOpen, Camera } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -173,14 +173,49 @@ export default function Resources() {
                       {article.excerpt}
                     </p>
                     
-                    {/* Author Info */}
+                    {/* Author Info with Profile Picture */}
                     {article.author && article.author.name && (
-                      <div className="mb-4 flex items-center gap-2">
-                        <User className="w-3 h-3 text-muted-foreground" />
-                        <span className="text-xs font-mono text-muted-foreground">
-                          {article.author.name}
-                          {article.author.role && ` · ${article.author.role}`}
-                        </span>
+                      <div className="mb-4 flex items-center gap-3">
+                        {/* Author Profile Picture */}
+                        {article.author.profileImageUrl ? (
+                          <div className="flex-shrink-0">
+                            <img 
+                              src={`https://apta-server.onrender.com${article.author.profileImageUrl}`}
+                              alt={article.author.name}
+                              className="w-10 h-10 rounded-full object-cover border-2 border-secondary/30"
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.style.display = 'none';
+                                // Show fallback icon if image fails to load
+                                const parent = e.target.parentElement;
+                                if (parent && !parent.querySelector('.fallback-icon')) {
+                                  const fallback = document.createElement('div');
+                                  fallback.className = 'w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center fallback-icon';
+                                  fallback.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+                                  parent.appendChild(fallback);
+                                  e.target.style.display = 'none';
+                                }
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          /* Fallback icon when no profile image exists */
+                          <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                            <User className="w-5 h-5 text-secondary" />
+                          </div>
+                        )}
+                        
+                        {/* Author Name & Role */}
+                        <div className="flex flex-col min-w-0">
+                          <span className="text-sm font-medium text-foreground truncate">
+                            {article.author.name}
+                          </span>
+                          {article.author.role && (
+                            <span className="text-xs text-muted-foreground truncate">
+                              {article.author.role}
+                            </span>
+                          )}
+                        </div>
                       </div>
                     )}
                     
