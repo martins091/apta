@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "wouter";
-import { ArrowRight, Download, User } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { ArrowRight, Download, User, BookOpen } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -16,6 +16,7 @@ const API_URL = 'https://apta-server.onrender.com/api';
 export default function Resources() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     document.title = "Resources — APTA Foundry";
@@ -34,6 +35,10 @@ export default function Resources() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleOpenCareerGuide = () => {
+    setLocation('/guide');
   };
 
   return (
@@ -60,6 +65,34 @@ export default function Resources() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Privacy Career Clarity Guide - Featured Card with Button */}
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="bg-gradient-to-br from-primary to-primary/90 p-8 relative group cursor-pointer"
+              onClick={handleOpenCareerGuide}
+            >
+              <div className="w-12 h-12 bg-accent/10 flex items-center justify-center mb-6">
+                <BookOpen className="w-6 h-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-serif font-bold text-primary-foreground mb-3 pr-4">Privacy Career Clarity Guide</h3>
+              <p className="text-primary-foreground/70 text-sm mb-6 font-sans">
+                Before you pick a cert, answer these 10 questions. Interactive workbook with certification breakdowns.
+              </p>
+              <Button 
+                variant="outline" 
+                className="w-full border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none group-hover:border-accent transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleOpenCareerGuide();
+                }}
+              >
+                Launch Guide →
+              </Button>
+            </motion.div>
+
             {[
               "Breaking Into Privacy: The 2026 Career Guide",
               "B2B SaaS GDPR Compliance Checklist",

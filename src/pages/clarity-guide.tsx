@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const PrivacyCareerGuide: React.FC = () => {
+  // State to store user answers
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+
+  const handleAnswerChange = (questionId: string, value: string) => {
+    setAnswers(prev => ({ ...prev, [questionId]: value }));
+  };
+
   return (
-    <div className="font-sans antialiased bg-[#E8E4DF] py-20">
+    <div className="font-sans antialiased bg-[#E8E4DF] py-20 print:py-0">
       {/* PAGE 1 — CLARITY QUESTIONS */}
       <div className="w-[794px] min-h-[1123px] mx-auto mb-8 bg-white shadow-xl flex flex-col relative overflow-hidden print:shadow-none print:mb-0 print:break-after-page">
         {/* Page Header */}
@@ -32,32 +39,23 @@ const PrivacyCareerGuide: React.FC = () => {
 
           {/* Question Cards */}
           <div className="my-5 space-y-3">
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#2BA8BC]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#2BA8BC] uppercase mb-1.5">Question 01</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">What is your current professional background?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">Your existing skills are not irrelevant — they are your starting point. Legal, HR, IT, compliance, and marketing backgrounds all map to different privacy entry points.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
+            {[
+              { id: 'q1', title: 'What is your current professional background?', subtitle: 'Your existing skills are not irrelevant — they are your starting point. Legal, HR, IT, compliance, and marketing backgrounds all map to different privacy entry points.', color: '#2BA8BC' },
+              { id: 'q2', title: 'Have you worked with privacy in any capacity — even informally?', subtitle: 'Many people have more privacy experience than they realise. GDPR compliance, data handling, consent forms, vendor due diligence — these all count.', color: '#E8B84B' },
+              { id: 'q3', title: 'Why do you want to move into privacy — and why now?', subtitle: 'This matters more than you think. Motivation shapes consistency. And "because it pays well" is a valid answer — but knowing your real reason helps you stay the course when it gets hard.', color: '#5C1A2E' }
+            ].map((q, idx) => (
+              <div key={q.id} className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px]" style={{ borderTopColor: q.color }}>
+                <div className="font-mono text-[10px] font-bold tracking-[2px] uppercase mb-1.5" style={{ color: q.color }}>Question {String(idx + 1).padStart(2, '0')}</div>
+                <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">{q.title}</div>
+                <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">{q.subtitle}</div>
+                <textarea
+                  value={answers[q.id] || ''}
+                  onChange={(e) => handleAnswerChange(q.id, e.target.value)}
+                  placeholder="Write your answer here..."
+                  className="w-full bg-white border border-dashed border-[#CCC] rounded-md p-2.5 text-[11px] text-[#1C1C1C] focus:outline-none focus:border-[#2BA8BC] resize-vertical min-h-[60px]"
+                />
               </div>
-            </div>
-
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#E8B84B]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#E8B84B] uppercase mb-1.5">Question 02</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">Have you worked with privacy in any capacity — even informally?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">Many people have more privacy experience than they realise. GDPR compliance, data handling, consent forms, vendor due diligence — these all count.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
-              </div>
-            </div>
-
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#5C1A2E]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#5C1A2E] uppercase mb-1.5">Question 03</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">Why do you want to move into privacy — and why now?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">This matters more than you think. Motivation shapes consistency. And "because it pays well" is a valid answer — but knowing your real reason helps you stay the course when it gets hard.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
-              </div>
-            </div>
+            ))}
           </div>
 
           <div className="flex items-center gap-3 my-5">
@@ -69,32 +67,23 @@ const PrivacyCareerGuide: React.FC = () => {
           <h2 className="font-serif text-xl font-bold text-[#5C1A2E] mt-0 mb-2.5">Part Two: Know Where You're Going</h2>
 
           <div className="my-5 space-y-3">
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#2BA8BC]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#2BA8BC] uppercase mb-1.5">Question 04</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">What does your ideal privacy role actually look like day to day?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">Do you want to be in courtrooms and contracts? Building programs and policies? Advising on AI systems? Speaking to boards? Each answer points to a different specialisation — and a different certification path.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
+            {[
+              { id: 'q4', title: 'What does your ideal privacy role actually look like day to day?', subtitle: 'Do you want to be in courtrooms and contracts? Building programs and policies? Advising on AI systems? Speaking to boards? Each answer points to a different specialisation — and a different certification path.', color: '#2BA8BC' },
+              { id: 'q5', title: 'What salary do you need — and what salary do you want?', subtitle: 'There\'s a difference between the number that pays your bills and the number that reflects your worth. Know both. Privacy roles start from $70K and reach $250K+ — where you land depends heavily on the path you choose.', color: '#E8B84B' },
+              { id: 'q6', title: 'Do you want to work in-house, at a consultancy, or independently?', subtitle: 'In-house means stability and depth. Consultancy means breadth and variety. Independent means freedom and risk. Each model suits a different personality — and each favours different certifications and skill stacks.', color: '#5C1A2E' }
+            ].map((q, idx) => (
+              <div key={q.id} className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px]" style={{ borderTopColor: q.color }}>
+                <div className="font-mono text-[10px] font-bold tracking-[2px] uppercase mb-1.5" style={{ color: q.color }}>Question {String(idx + 4).padStart(2, '0')}</div>
+                <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">{q.title}</div>
+                <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">{q.subtitle}</div>
+                <textarea
+                  value={answers[q.id] || ''}
+                  onChange={(e) => handleAnswerChange(q.id, e.target.value)}
+                  placeholder="Write your answer here..."
+                  className="w-full bg-white border border-dashed border-[#CCC] rounded-md p-2.5 text-[11px] text-[#1C1C1C] focus:outline-none focus:border-[#2BA8BC] resize-vertical min-h-[60px]"
+                />
               </div>
-            </div>
-
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#E8B84B]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#E8B84B] uppercase mb-1.5">Question 05</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">What salary do you need — and what salary do you want?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">There's a difference between the number that pays your bills and the number that reflects your worth. Know both. Privacy roles start from $70K and reach $250K+ — where you land depends heavily on the path you choose.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
-              </div>
-            </div>
-
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#5C1A2E]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#5C1A2E] uppercase mb-1.5">Question 06</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">Do you want to work in-house, at a consultancy, or independently?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">In-house means stability and depth. Consultancy means breadth and variety. Independent means freedom and risk. Each model suits a different personality — and each favours different certifications and skill stacks.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -122,32 +111,23 @@ const PrivacyCareerGuide: React.FC = () => {
 
         <div className="flex-1 px-[52px] py-9">
           <div className="my-5 space-y-3">
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#2BA8BC]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#2BA8BC] uppercase mb-1.5">Question 07</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">Is your focus US-based, European, or global?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">This single answer narrows your first certification immediately. US market → CIPP/US. EU clients or GDPR obligations → CIPP/E. Both → start with whichever is most relevant to your current employer or target roles.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
+            {[
+              { id: 'q7', title: 'Is your focus US-based, European, or global?', subtitle: 'This single answer narrows your first certification immediately. US market → CIPP/US. EU clients or GDPR obligations → CIPP/E. Both → start with whichever is most relevant to your current employer or target roles.', color: '#2BA8BC' },
+              { id: 'q8', title: 'Are you more drawn to legal and policy work — or to building and managing programs?', subtitle: 'Legal and policy work → CIPP credentials are your foundation. Building and managing programs → CIPM is your next step. Both answers are valid. Knowing which excites you more tells you a great deal about where your career will thrive.', color: '#E8B84B' },
+              { id: 'q9', title: 'Does AI governance interest you — or does it feel like noise?', subtitle: 'If it genuinely interests you, AIGP is one of the highest-ROI credentials in compliance right now. If it feels like a distraction, that\'s okay — get grounded in CIPP first. You can always layer it later. Never chase a credential you won\'t use.', color: '#5C1A2E' }
+            ].map((q, idx) => (
+              <div key={q.id} className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px]" style={{ borderTopColor: q.color }}>
+                <div className="font-mono text-[10px] font-bold tracking-[2px] uppercase mb-1.5" style={{ color: q.color }}>Question {String(idx + 7).padStart(2, '0')}</div>
+                <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">{q.title}</div>
+                <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">{q.subtitle}</div>
+                <textarea
+                  value={answers[q.id] || ''}
+                  onChange={(e) => handleAnswerChange(q.id, e.target.value)}
+                  placeholder="Write your answer here..."
+                  className="w-full bg-white border border-dashed border-[#CCC] rounded-md p-2.5 text-[11px] text-[#1C1C1C] focus:outline-none focus:border-[#2BA8BC] resize-vertical min-h-[60px]"
+                />
               </div>
-            </div>
-
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#E8B84B]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#E8B84B] uppercase mb-1.5">Question 08</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">Are you more drawn to legal and policy work — or to building and managing programs?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">Legal and policy work → CIPP credentials are your foundation. Building and managing programs → CIPM is your next step. Both answers are valid. Knowing which excites you more tells you a great deal about where your career will thrive.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
-              </div>
-            </div>
-
-            <div className="bg-[#FAF7F2] rounded-xl p-5 pt-[22px] border-t-[3px] border-t-[#5C1A2E]">
-              <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#5C1A2E] uppercase mb-1.5">Question 09</div>
-              <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">Does AI governance interest you — or does it feel like noise?</div>
-              <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">If it genuinely interests you, AIGP is one of the highest-ROI credentials in compliance right now. If it feels like a distraction, that's okay — get grounded in CIPP first. You can always layer it later. Never chase a credential you won't use.</div>
-              <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[42px] flex items-center">
-                <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
-              </div>
-            </div>
+            ))}
           </div>
 
           <div className="flex items-center gap-3 my-5">
@@ -268,42 +248,21 @@ const PrivacyCareerGuide: React.FC = () => {
           <p className="text-[13.5px] text-[#333] font-light leading-relaxed mb-3">Use your answers from pages 1 and 2. Match your situation to the recommendation below. If more than one applies, start with the first match.</p>
 
           <div className="my-5 space-y-2.5">
-            <div className="flex items-stretch">
-              <div className="bg-[#5C1A2E] text-white text-[10px] font-bold tracking-[2px] uppercase px-[14px] py-3 rounded-l-lg flex items-center justify-center min-w-[52px]">IF</div>
-              <div className="bg-[#FAF7F2] px-4 py-3 flex-1 text-[13px] font-light text-[#333] flex items-center leading-relaxed">You are US-based and targeting US employers or clients</div>
-              <div className="bg-[#FAF7F2] px-2 py-3 text-base text-[#1A7A8A] flex items-center">→</div>
-              <div className="bg-[#1A7A8A] text-white px-4 py-3 rounded-r-lg text-xs font-bold flex items-center min-w-[140px] leading-tight">Start with CIPP/US</div>
-            </div>
-            <div className="flex items-stretch">
-              <div className="bg-[#5C1A2E] text-white text-[10px] font-bold tracking-[2px] uppercase px-[14px] py-3 rounded-l-lg flex items-center justify-center min-w-[52px]">IF</div>
-              <div className="bg-[#FAF7F2] px-4 py-3 flex-1 text-[13px] font-light text-[#333] flex items-center leading-relaxed">Your work involves EU data, GDPR, or you want DPO eligibility</div>
-              <div className="bg-[#FAF7F2] px-2 py-3 text-base text-[#1A7A8A] flex items-center">→</div>
-              <div className="bg-[#1A7A8A] text-white px-4 py-3 rounded-r-lg text-xs font-bold flex items-center min-w-[140px] leading-tight">Start with CIPP/E</div>
-            </div>
-            <div className="flex items-stretch">
-              <div className="bg-[#5C1A2E] text-white text-[10px] font-bold tracking-[2px] uppercase px-[14px] py-3 rounded-l-lg flex items-center justify-center min-w-[52px]">IF</div>
-              <div className="bg-[#FAF7F2] px-4 py-3 flex-1 text-[13px] font-light text-[#333] flex items-center leading-relaxed">You already have a CIPP and want to move into program leadership</div>
-              <div className="bg-[#FAF7F2] px-2 py-3 text-base text-[#1A7A8A] flex items-center">→</div>
-              <div className="bg-[#1A7A8A] text-white px-4 py-3 rounded-r-lg text-xs font-bold flex items-center min-w-[140px] leading-tight">Add CIPM next</div>
-            </div>
-            <div className="flex items-stretch">
-              <div className="bg-[#5C1A2E] text-white text-[10px] font-bold tracking-[2px] uppercase px-[14px] py-3 rounded-l-lg flex items-center justify-center min-w-[52px]">IF</div>
-              <div className="bg-[#FAF7F2] px-4 py-3 flex-1 text-[13px] font-light text-[#333] flex items-center leading-relaxed">You want the highest salary premium and AI genuinely interests you</div>
-              <div className="bg-[#FAF7F2] px-2 py-3 text-base text-[#1A7A8A] flex items-center">→</div>
-              <div className="bg-[#1A7A8A] text-white px-4 py-3 rounded-r-lg text-xs font-bold flex items-center min-w-[140px] leading-tight">Add AIGP third</div>
-            </div>
-            <div className="flex items-stretch">
-              <div className="bg-[#5C1A2E] text-white text-[10px] font-bold tracking-[2px] uppercase px-[14px] py-3 rounded-l-lg flex items-center justify-center min-w-[52px]">IF</div>
-              <div className="bg-[#FAF7F2] px-4 py-3 flex-1 text-[13px] font-light text-[#333] flex items-center leading-relaxed">You are a technologist or engineer transitioning into privacy</div>
-              <div className="bg-[#FAF7F2] px-2 py-3 text-base text-[#1A7A8A] flex items-center">→</div>
-              <div className="bg-[#1A7A8A] text-white px-4 py-3 rounded-r-lg text-xs font-bold flex items-center min-w-[140px] leading-tight">Consider CIPT alongside CIPP</div>
-            </div>
-            <div className="flex items-stretch">
-              <div className="bg-[#5C1A2E] text-white text-[10px] font-bold tracking-[2px] uppercase px-[14px] py-3 rounded-l-lg flex items-center justify-center min-w-[52px]">IF</div>
-              <div className="bg-[#FAF7F2] px-4 py-3 flex-1 text-[13px] font-light text-[#333] flex items-center leading-relaxed">You serve both US and EU clients or work in a global company</div>
-              <div className="bg-[#FAF7F2] px-2 py-3 text-base text-[#1A7A8A] flex items-center">→</div>
-              <div className="bg-[#1A7A8A] text-white px-4 py-3 rounded-r-lg text-xs font-bold flex items-center min-w-[140px] leading-tight">Get both CIPP/US + CIPP/E</div>
-            </div>
+            {[
+              { condition: "You are US-based and targeting US employers or clients", result: "Start with CIPP/US" },
+              { condition: "Your work involves EU data, GDPR, or you want DPO eligibility", result: "Start with CIPP/E" },
+              { condition: "You already have a CIPP and want to move into program leadership", result: "Add CIPM next" },
+              { condition: "You want the highest salary premium and AI genuinely interests you", result: "Add AIGP third" },
+              { condition: "You are a technologist or engineer transitioning into privacy", result: "Consider CIPT alongside CIPP" },
+              { condition: "You serve both US and EU clients or work in a global company", result: "Get both CIPP/US + CIPP/E" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-stretch">
+                <div className="bg-[#5C1A2E] text-white text-[10px] font-bold tracking-[2px] uppercase px-[14px] py-3 rounded-l-lg flex items-center justify-center min-w-[52px]">IF</div>
+                <div className="bg-[#FAF7F2] px-4 py-3 flex-1 text-[13px] font-light text-[#333] flex items-center leading-relaxed">{item.condition}</div>
+                <div className="bg-[#FAF7F2] px-2 py-3 text-base text-[#1A7A8A] flex items-center">→</div>
+                <div className="bg-[#1A7A8A] text-white px-4 py-3 rounded-r-lg text-xs font-bold flex items-center min-w-[140px] leading-tight">{item.result}</div>
+              </div>
+            ))}
           </div>
 
           <div className="border-l-4 border-[#1A7A8A] bg-[#E6F4F6] rounded-r-lg px-[18px] py-[14px] my-[18px]">
@@ -367,9 +326,12 @@ const PrivacyCareerGuide: React.FC = () => {
             <div className="font-mono text-[10px] font-bold tracking-[2px] text-[#E8B84B] uppercase mb-1.5">Question 10 — The Most Important One</div>
             <div className="font-serif text-[15px] font-bold text-[#1C1C1C] leading-tight mb-2">What would it mean for your life if you landed the right privacy role in the next 90 days?</div>
             <div className="text-xs text-[#555555] font-light italic leading-relaxed mb-2">Write this down. Seriously. Not for anyone else — for you. The clearer your answer, the more motivated you will be when the studying gets hard, the applications feel slow, and the process tests your patience. This answer is your reason. Come back to it.</div>
-            <div className="bg-white border border-dashed border-[#CCC] rounded-md p-2.5 min-h-[60px] flex items-center">
-              <span className="text-[11px] text-[#BBBBBB] italic">Write your answer here...</span>
-            </div>
+            <textarea
+              value={answers.q10 || ''}
+              onChange={(e) => handleAnswerChange('q10', e.target.value)}
+              placeholder="Write your answer here..."
+              className="w-full bg-white border border-dashed border-[#CCC] rounded-md p-2.5 text-[11px] text-[#1C1C1C] focus:outline-none focus:border-[#2BA8BC] resize-vertical min-h-[80px]"
+            />
           </div>
 
           <div className="border-l-4 border-[#5C1A2E] bg-[#F7EEF1] rounded-r-lg px-[18px] py-[14px] my-[18px]">

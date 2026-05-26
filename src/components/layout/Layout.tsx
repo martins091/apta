@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   Menu, X, ChevronDown, ArrowRight, Linkedin,
   Shield, Layers, Brain, AlertCircle, FileSearch,
-  Users, GraduationCap, Award, BookOpen, Globe, Mail,
+  Users, Mail,
   Building2, Briefcase,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -48,7 +48,7 @@ const NAV: NavItem[] = [
     ],
   },
   { label: "Resources", href: "/resources" },
-  { label: "Clarity Guide", href: "/guide" },
+  // { label: "Clarity Guide", href: "/guide" },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
